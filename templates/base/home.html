@@ -4,24 +4,35 @@
 {% block title %}{% trans 'Главная' %}{% endblock %}
 {% block body %}
     <div class="slider_wrap">
-        <div class="slider_shadow"></div>
         <div class="main_slider ">
         {% for item in slider_events %}
-            <img class="slider_item" src="{{ item.cover_photo.url }}" alt="">
+            <div class="slider_item" style="background-image: linear-gradient(to right, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('{{ item.cover_photo.url }}') ; background-size: cover; "></div>
         {% endfor %}
         </div>
     </div>
-
-
-
-
-    <p>Ивенты в календарь</p>
-    {% for item in events %}
-        {{ item }}
-    {% endfor %}
-
-    <p>10 новостей</p>
-    {% for item in news %}
-        {{ item }}
-    {% endfor %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                {% for item in events %}
+                    {{ item }}
+                {% endfor %}
+            </div>
+            <div class="col-md-6">
+                {% for item in news %}
+                <a href="#">
+                    <div class="news_wrap">
+                        <div class="news_prev_img">
+                            <img width="95px" height="95px" style="object-fit: cover" src="{{ item.photo.url }}" alt="">
+                        </div>
+                        <div class="news_pref_text">
+                            <div class="news_title">{{ item.title }}</div>
+                            <div class="news_text">{{ item.text }}</div>
+                        </div>
+                </div>
+                </a>
+                {% endfor %}
+                <a class="show_all_news" href="#">Смотреть все</a>
+            </div>
+        </div>
+    </div>
 {% endblock %}
