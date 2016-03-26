@@ -89,13 +89,8 @@
         });
 
         // Здесь нужно указывать "type", по ним ставятся уникальные классы
-        var events = [
-            { date: '2016-03-11', title: '11 МАРТ, ДО ОБЕДА', type: 'full' },
-            { date: '2016-03-15', title: '15 МАРТ, ПОСЛЕ ОБЕДА', type: 'full' },
-            { date: '2016-03-29', title: '29 МАРТ, ПОЛНЫЙ ДЕНЬ', type: 'full' },
-            { date: '2016-04-10', title: '10 АПР, ПОЛНЫЙ ДЕНЬ', type: 'full' }
-        ];
 
+        var events = {{ events|safe }}
         clndr = $('#full-clndr').clndr({
             template: $('#full-clndr-template').html(),
             daysOfTheWeek: ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС'],

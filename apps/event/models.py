@@ -19,7 +19,7 @@ class Event(models.Model):
     cover_photo = models.ImageField(u'Фотография', upload_to='events/')
     event_type = models.ForeignKey(EventType, verbose_name=u"Тип мероприятия")
     description = models.TextField(u'Описание')
-    data = models.DateTimeField(u'Время проведения')
+    date = models.DateTimeField(u'Время проведения')
     price = models.IntegerField(u'Цена', default=0)
 
     class Meta:
