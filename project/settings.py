@@ -41,6 +41,10 @@ INSTALLED_APPS = [
     'legoteka',
     'base',
     'library',
+    'apps.event',
+    'apps.experts',
+    'apps.feedback',
+    'apps.aid',
 ]
 
 MIDDLEWARE_CLASSES = [
