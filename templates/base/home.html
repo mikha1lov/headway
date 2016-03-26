@@ -7,7 +7,7 @@
     <div class="main_slider ">
         {% for item in slider_events %}
             {{ item }}
-            <img src="{% static 'img/Slider_1.jpg' %}" alt="">
+            <img src="{{ item.cover_photo.url }}" alt="">
         {% endfor %}
     </div>
     <p>Ивенты в слайдер</p>

@@ -90,7 +90,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'project.wsgi.application'
 
-
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.normpath(os.path.join(BASE_DIR, 'media'))
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
