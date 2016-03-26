@@ -3,4 +3,13 @@
 
 {% block title %}{% trans 'Главная' %}{% endblock %}
 {% block body %}
+    <p>Ивенты в слайдер</p>
+    {% for item in slider_events %}
+        {{ item }}
+    {% endfor %}
+
+    <p>Ивенты в календарь</p>
+    {% for item in events %}
+        {{ item }}
+    {% endfor %}
 {% endblock %}
