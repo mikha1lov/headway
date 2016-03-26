@@ -1,0 +1,23 @@
+{% load static %}
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="footer_wrap">
+                <div class="footer_menu_wrap">
+                    <a href="{% url 'base:home' %}" class="header_menu_items">Главная</a>
+                    <a href="#" class="header_menu_items">О нас</a>
+                    <a href="{% url 'legoteka:home' %}" class="header_menu_items">Леготека</a>
+                    <a href="#" class="header_menu_items">Финансовые ресурсы</a>
+                    <a href="{% url 'humanitarian_aid:home' %}" class="header_menu_items">Гумпомощь</a>
+                    <a href="#" class="header_menu_items">Информация</a>
+                </div>
+                <div class="footer_social_block">
+                    <a href="#"><img src="{% static 'img/fb.png' %}" alt=""></a>
+                    <a href="#"><img src="{% static 'img/inst.png' %}" alt=""></a>
+                    <a href="#"><img src="{% static 'img/tw.png' %}" alt=""></a>
+                    <a href="#"><img src="{% static 'img/icn_gplus.png' %}" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
