@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+{% load i18n l10n static %}
+
+{% block title %}{{ page.title }}{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="pagesContent">
+            <div class="row">
+                <div class="page-content span9">
+                    <div class="page-header"><h2>{{ page.title }}</h2></div>
+                    <div class="text-page">
+                        {{ page.content|safe }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

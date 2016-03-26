@@ -1,6 +1,5 @@
 # coding: utf-8
 from __future__ import unicode_literals
-
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from redactor.fields import RedactorField
@@ -23,3 +22,17 @@ class FinancialEvent(models.Model):
 
     def __unicode__(self):
         return self.title
+
+
+class FinancialEventParticipants(models.Model):
+    event = models.ForeignKey(FinancialEvent, verbose_name=u"Мероприятие")
+    name = models.CharField(u"ФИО", max_length=255)
+    contacts = models.CharField("Телефон или email", max_length=255)
+    note = models.CharField(u"Примечание", max_length=255, blank=True, null=True)
+
+    class Meta:
+        verbose_name = u"Заявка на участие в сооплпченом мероприятии"
+        verbose_name_plural = u"Заявки на участие в сооплаченых мероприятиях"
+
+    def __unicode__(self):
+        return self.name
