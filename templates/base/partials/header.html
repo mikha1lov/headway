@@ -7,7 +7,7 @@
                     <img src="{% static 'img/logo4.png' %}" alt="">
                 </div>
                 <div class="header_menu_wrap">
-                    <a href="#" class="header_menu_items">Главная</a>
+                    <a href="{% url 'base:home' %}" class="header_menu_items">Главная</a>
                     <a href="#" class="header_menu_items">О нас</a>
                     <a href="{% url 'legoteka:home' %}" class="header_menu_items">Леготека</a>
                     <a href="#" class="header_menu_items">Финансовые ресурсы</a>
