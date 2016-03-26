@@ -2,3 +2,4 @@ Django==1.9.4
 argparse==1.2.1
 wsgiref==0.1.2
 django-admin-tools==0.7.1
+django-wysiwyg-redactor==0.4.9
