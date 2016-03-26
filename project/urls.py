@@ -22,5 +22,6 @@ from project import settings
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('apps.base.urls', namespace='base')),
+    url(r'^legoteka/', include('apps.legoteka.urls', namespace='legoteka')),
     url(r'^api/', include('api.urls')),
 ]
