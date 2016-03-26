@@ -2,23 +2,20 @@
 {% load i18n l10n static %}
 
 {% block title %}{% trans 'Главная' %}{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/clndr.css' %}">
+{% endblock %}
 {% block body %}
     <div class="slider_wrap">
         <div class="main_slider ">
-        {% for item in slider_events %}
-            <div class="slider_item" style="background-image: linear-gradient(to right, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('{{ item.cover_photo.url }}') ; background-size: cover; "></div>
-        {% endfor %}
+            {% for item in slider_events %}
+                <div class="slider_item" style="background-image: linear-gradient(to right, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('{{ item.cover_photo.url }}') ; background-size: cover; "></div>
+            {% endfor %}
         </div>
     </div>
     <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                {% for item in events %}
-                    {{ item }}
-                {% endfor %}
-            </div>
-            <div class="col-md-6">
-                {% for item in news %}
+        <div class="col-md-6">
+            {% for item in news %}
                 <a href="#">
                     <div class="news_wrap">
                         <div class="news_prev_img">
@@ -28,11 +25,78 @@
                             <div class="news_title">{{ item.title }}</div>
                             <div class="news_text">{{ item.text }}</div>
                         </div>
-                </div>
+                    </div>
                 </a>
-                {% endfor %}
-                <a class="show_all_news" href="#">Смотреть все</a>
+            {% endfor %}
+            <a class="show_all_news" href="#">Смотреть все</a>
+        </div>
+        <div class="col-md-6">
+            <p>Календарь событий</p>
+            <div id="full-clndr" class="clearfix">
+                <script type="text/template" id="full-clndr-template">
+                    <div class="clndr-controls">
+                        <div class="clndr-previous-button">&lt;</div>
+                        <div class="clndr-next-button">&gt;</div>
+                        <div class="current-month"><%= month %> <%= year %></div>
+
+                    </div>
+                    <div class="clndr-grid">
+                        <div class="days-of-the-week clearfix">
+                            <% _.each(daysOfTheWeek, function(day) { %>
+                            <div class="header-day"><%= day %></div>
+                            <% }); %>
+                        </div>
+                        <div class="days">
+                            <% _.each(days, function(day) { %>
+                            <div class="<%= day.classes %>" id="<%= day.id %>"><span class="day-number"><%= day.day %></span></div>
+                            <% }); %>
+                        </div>
+                    </div>
+                    <div class="event-listing">
+                        <div class="event-listing-title">Занято в этом месяце</div>
+                        <% _.each(eventsThisMonth, function(event) { %>
+                        <div class="event-item">
+                            <% if (event.type == 'half-b') { %>
+                            <div class="event-item-type-half-b"></div>
+                            <% } else if (event.type == 'half-a') { %>
+                            <div class="event-item-type-half-a"></div>
+                            <% } else { %>
+                            <div class="event-item-type-full"></div>
+                            <% } %>
+                            <div class="event-item-name"><%= event.title %></div>
+                        </div>
+                        <% }); %>
+                    </div>
+                </script>
             </div>
         </div>
     </div>
+{% endblock %}
+{% block extra_js %}
+    <script src="{% static 'js/underscore.js' %}"></script>
+    <script src="{% static 'js/moment.js' %}"></script>
+    <script src="{% static 'js/clndr.min.js' %}"></script>
+    <script>
+        moment.locale('ru');
+        moment.updateLocale('ru', {
+            months : [
+                "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль",
+                "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"
+            ]
+        });
+
+        // Здесь нужно указывать "type", по ним ставятся уникальные классы
+        var events = [
+            { date: '2016-03-11', title: '11 МАРТ, ДО ОБЕДА', type: 'half-b' },
+            { date: '2016-03-15', title: '15 МАРТ, ПОСЛЕ ОБЕДА', type: 'half-a' },
+            { date: '2016-03-29', title: '29 МАРТ, ПОЛНЫЙ ДЕНЬ', type: 'full' },
+            { date: '2016-04-10', title: '10 АПР, ПОЛНЫЙ ДЕНЬ', type: 'full' }
+        ];
+
+        clndr = $('#full-clndr').clndr({
+            template: $('#full-clndr-template').html(),
+            daysOfTheWeek: ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС'],
+            events: events
+        });
+    </script>
 {% endblock %}
