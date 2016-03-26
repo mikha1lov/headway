@@ -12,7 +12,6 @@ class News(models.Model):
                          redactor_options={
                              'lang': 'en',
                          })
-
     class Meta:
         verbose_name = u"Новость"
         verbose_name_plural = u"Новость"
