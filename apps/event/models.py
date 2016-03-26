@@ -16,6 +16,7 @@ class EventType(models.Model):
 
 class Event(models.Model):
     title = models.CharField(u'Название', max_length=60)
+    cover_photo = models.ImageField(u'Фотография', upload_to='events/')
     event_type = models.ForeignKey(EventType, verbose_name=u"Тип мероприятия")
     description = models.TextField(u'Описание')
     data = models.DateTimeField(u'Время проведения')
