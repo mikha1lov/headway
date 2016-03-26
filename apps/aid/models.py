@@ -14,27 +14,38 @@ class AidType(models.Model):
         return self.title
 
 TYPES = (
-    ('1', 'Для родителей'),
-    ('2', 'Для потенциальных спонсоров: Детям'),
-    ('3', 'Для потенциальных спонсоров: Центру'),
+    ('1', 'Детям'),
+    ('2', 'Центру'),
 )
 
 
-class HumanitarianAid(models.Model):
+class HumanitarianAidForKid(models.Model):
     title = models.CharField(u'Название', max_length=60)
-    type = models.CharField(u"Тип гуманитарной помощи", max_length=1, default=1, choices=TYPES)
     description = models.TextField(u'Описание')
 
     class Meta:
-        verbose_name = u'гуманитарная помощь'
-        verbose_name_plural = u'гуманитарная помощь'
+        verbose_name = u'гуманитарная помощь родителям'
+        verbose_name_plural = u'гуманитарная помощь родителям'
+
+    def __unicode__(self):
+        return self.title
+
+
+class HumanitarianAidForSponsors(models.Model):
+    title = models.CharField(u'Название', max_length=60)
+    type = models.CharField(u"Кому?", max_length=1, default=1, choices=TYPES)
+    description = models.TextField(u'Описание')
+
+    class Meta:
+        verbose_name = u'для потенциальных спонсоров'
+        verbose_name_plural = u'для потенциальных спонсоров'
 
     def __unicode__(self):
         return self.title
 
 
 class AidRequest(models.Model):
-    aid_item = models.ForeignKey(HumanitarianAid, verbose_name=u'Гуманитарная помощь')
+    aid_item = models.ForeignKey(HumanitarianAidForKid, verbose_name=u'Гуманитарная помощь')
     name = models.CharField(u"ФИО", max_length=255)
     contacts = models.CharField("Телефон или email", max_length=255)
     note = models.CharField(u"Примечание", max_length=255, blank=True, null=True)
