@@ -28,7 +28,7 @@ class HumanitarianAid(models.Model):
 
 
 class AidRequest(models.Model):
-    aid_item = models.ForeignKey(HumanitarianAid, u'Гуманитарная помощь')
+    aid_item = models.ForeignKey(HumanitarianAid, verbose_name=u'Гуманитарная помощь')
     name = models.CharField(u"ФИО", max_length=255)
     contacts = models.CharField("Телефон или email", max_length=255)
     note = models.CharField(u"Примечание", max_length=255, blank=True, null=True)
