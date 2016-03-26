@@ -2,11 +2,14 @@ body{
   font-family: Roboto, sans-serif;
   font-size: 16px;
 }
+a{
+  color: #080808;
+}
 a:hover{
   text-decoration: none;
 }
 .header_nav_menu{
-  background: linear-gradient(to right, #005E58, #02CCC5);
+background: linear-gradient(to right, rgba(0,94,88,1) 0%, rgba(2,204,197,1) 100%);
 }
 .header_wrap{
   display: flex;
@@ -40,18 +43,17 @@ a:hover{
     z-index: 1;
   }
 }
+.slider_title {
+  color: #000000;
+  font-size: 26px;
+  margin-top: 100px;
+  margin-left: 10%;
+  width: 320px;
+}
 .news_wrap{
   display: flex;
   margin: 20px 0;
   .news_prev_img{
     margin-right: 25px;
   }
-}
-.news_pref_text{
-  color: #000;
-}
-.show_all_news{
-  text-align: right;
-  color: #000;
-  display: block;
 }
