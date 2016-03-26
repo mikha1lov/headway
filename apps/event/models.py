@@ -36,8 +36,8 @@ class EventParticipants(models.Model):
     note = models.CharField(u"Примечание", max_length=255, blank=True, null=True)
 
     class Meta:
-        verbose_name = u"Заявка на предмет леготеки"
-        verbose_name_plural = u"Заявки на предметы леготеки"
+        verbose_name = u"Заявка на участие в мероприятии"
+        verbose_name_plural = u"Заявки на участие в мероприятиях"
 
     def __unicode__(self):
         return self.name

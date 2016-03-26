@@ -7,3 +7,10 @@ class Expert(models.Model):
     name = models.CharField(u"ФИО", max_length=255)
     direction = models.CharField(u"Направление", max_length=255)
     work_time = models.CharField(u"Время работы", max_length=255)
+
+    class Meta:
+        verbose_name = u'эксперт'
+        verbose_name_plural = u'эксперты'
+
+    def __unicode__(self):
+        return self.name
