@@ -57,3 +57,31 @@ background: linear-gradient(to right, rgba(0,94,88,1) 0%, rgba(2,204,197,1) 100%
     margin-right: 25px;
   }
 }
+.subscrip_bg{
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('../img/Slider_1.jpg') ;
+  background-size: cover;
+  min-height: 230px;
+  h2{
+    text-align: center;
+    margin: 25px 0;
+  }
+  input[type='text']{
+    margin: 0 auto;
+    display: block;
+    padding: 9px;
+    border: 1px solid #cccccc;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    width: 300px;
+  }
+  button{
+    color: #ffffff;
+    border: none;
+    background: rgba(2,204,197,1);
+    margin: 25px auto;
+    display: block;
+    padding: 10px 25px;
+    border-radius: 5px;
+  }
+}
