@@ -7,8 +7,8 @@ class AidType(models.Model):
     title = models.CharField(u'Начначение гуманитарной помощи', max_length=60)
 
     class Meta:
-        verbose_name = u'гуманитарная помощь'
-        verbose_name_plural = u'гуманитарная помощь'
+        verbose_name = u'тип гуманитарной помощь'
+        verbose_name_plural = u'типы гуманитарной помощи'
 
     def __unicode__(self):
         return self.title
@@ -47,8 +47,8 @@ class GivingAid(models.Model):
     message = models.TextField(u"Сообщение", max_length=255, blank=True, null=True)
 
     class Meta:
-        verbose_name = u'заявка на получение гум помощи'
-        verbose_name_plural = u'заявки на получение гум помощи'
+        verbose_name = u'заявка на оказание гум помощи'
+        verbose_name_plural = u'заявки на оказание гум помощи'
 
     def __unicode__(self):
         return self.name
