@@ -13,7 +13,13 @@
         <meta property="og:description" content="How much does culture influence creative thinking?" />
         <meta property="og:image" content="http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg" />
     {% endblock meta_tags %}
-    {% block extra_css %}{% endblock %}
+    {% block extra_css %}
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        <link rel="stylesheet" href="{% static 'css/skeleton.css' %}">
+        <link rel="stylesheet" href="{% static 'css/screen.css' %}">
+        <link rel="stylesheet" href="{% static 'css/prettyPhoto.css' %}" type="text/css" media="screen" />
+        <link href='http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    {% endblock %}
 </head>
 <body>
 
