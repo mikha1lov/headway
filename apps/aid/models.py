@@ -1,11 +1,10 @@
+# coding: utf-8
 from __future__ import unicode_literals
 from django.db import models
 
 
-class HumanitarianAid(models.Model):
-    title = models.CharField(u'Название', max_length=60)
-    type = models.ForeignKey(AidType, verbose_name=u"Начначение гуманитарной помощи")
-    description = models.TextField(u'Описание')
+class AidType(models.Model):
+    title = models.CharField(u'Начначение гуманитарной помощи', max_length=60)
 
     class Meta:
         verbose_name = u'гуманитарная помощь'
@@ -15,8 +14,10 @@ class HumanitarianAid(models.Model):
         return self.title
 
 
-class AidType(models.Model):
-    title = models.CharField(u'Начначение гуманитарной помощи', max_length=60)
+class HumanitarianAid(models.Model):
+    title = models.CharField(u'Название', max_length=60)
+    type = models.ForeignKey(AidType, verbose_name=u"Начначение гуманитарной помощи")
+    description = models.TextField(u'Описание')
 
     class Meta:
         verbose_name = u'гуманитарная помощь'

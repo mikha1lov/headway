@@ -1,5 +1,17 @@
+# coding: utf-8
 from __future__ import unicode_literals
 from django.db import models
+
+
+class EventType(models.Model):
+    title = models.CharField("Название", max_length=255)
+
+    class Meta:
+        verbose_name = u"Тип мероприятия"
+        verbose_name_plural = u"Тип мероприятия"
+
+    def __unicode__(self):
+        return self.title
 
 
 class Event(models.Model):
@@ -12,17 +24,6 @@ class Event(models.Model):
     class Meta:
         verbose_name = u'мероприятие'
         verbose_name_plural = u'мероприятия'
-
-    def __unicode__(self):
-        return self.title
-
-
-class EventType(models.Model):
-    title = models.CharField("Название", max_length=255)
-
-    class Meta:
-        verbose_name = u"Тип мероприятия"
-        verbose_name_plural = u"Тип мероприятия"
 
     def __unicode__(self):
         return self.title
