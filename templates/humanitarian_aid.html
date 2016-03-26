@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% load i18n l10n static %}
+
+{% block title %}{% trans 'Гуманитарная помощь' %}{% endblock %}
+{% block body %}
+    {% regroup items by type as sorted_items %}
+    {% for item in sorted_items %}
+        {{ item.get_grouper_display }}
+        <ul>
+        {% for i in item.list %}
+          <li>{{ i.title }}</li>
+        {% endfor %}
+        </ul>
+    {% endfor %}
+{% endblock %}

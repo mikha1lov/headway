@@ -4,7 +4,7 @@ from django.db import models
 
 
 class AidType(models.Model):
-    title = models.CharField(u'Начначение гуманитарной помощи', max_length=60)
+    title = models.CharField(u'Название', max_length=60)
 
     class Meta:
         verbose_name = u'тип гуманитарной помощь'
@@ -13,10 +13,16 @@ class AidType(models.Model):
     def __unicode__(self):
         return self.title
 
+TYPES = (
+    ('1', 'Для родителей'),
+    ('2', 'Для потенциальных спонсоров: Детям'),
+    ('3', 'Для потенциальных спонсоров: Центру'),
+)
+
 
 class HumanitarianAid(models.Model):
     title = models.CharField(u'Название', max_length=60)
-    type = models.ForeignKey(AidType, verbose_name=u"Начначение гуманитарной помощи")
+    type = models.CharField(u"Тип гуманитарной помощи", max_length=1, default=1, choices=TYPES)
     description = models.TextField(u'Описание')
 
     class Meta:

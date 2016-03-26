@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('apps.base.urls', namespace='base')),
     url(r'^legoteka/', include('apps.legoteka.urls', namespace='legoteka')),
+    url(r'^humanitarian_aid/', include('apps.aid.urls', namespace='humanitarian_aid')),
     url(r'^api/', include('api.urls')),
     url(r'^pages/(\S+)/$', 'apps.pages.views.pages_detail', name='pages_detail'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

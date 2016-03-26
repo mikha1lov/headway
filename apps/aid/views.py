@@ -1,3 +1,8 @@
 from django.shortcuts import render
 
-# Create your views here.
+from apps.aid.models import HumanitarianAid
+
+
+def humanitarian_aid(request):
+    items = HumanitarianAid.objects.all()
+    return render(request, 'humanitarian_aid.html', locals())
