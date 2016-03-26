@@ -14,10 +14,17 @@ class EventType(models.Model):
         return self.title
 
 
+TYPES = (
+    ('class', 'Занятия'),
+    ('fun', 'Досуг'),
+    ('pro', 'Специалистам'),
+)
+
+
 class Event(models.Model):
     title = models.CharField(u'Название', max_length=60)
     cover_photo = models.ImageField(u'Фотография', upload_to='events/')
-    event_type = models.ForeignKey(EventType, verbose_name=u"Тип мероприятия")
+    type = models.CharField(u"Тип мероприятия", max_length=10, default='class', choices=TYPES)
     description = models.TextField(u'Описание')
     date = models.DateTimeField(u'Время проведения')
     price = models.IntegerField(u'Цена', default=0)

@@ -56,12 +56,14 @@
                         </div>
                     </div>
                     <div class="event-listing">
-                        <div class="event-listing-title">Занято в этом месяце</div>
+                        <div class="event-listing-title">В этом месяце</div>
                         <% _.each(eventsThisMonth, function(event) { %>
                         <div class="event-item">
-                            <% if (event.type == 'half-b') { %>
+                            <% if (event.type == 'class') { %>
                             <div class="event-item-type-half-b"></div>
-                            <% } else if (event.type == 'half-a') { %>
+                            <% } else if (event.type == 'fun') { %>
+                            <div class="event-item-type-half-a"></div>
+                            <% } else if (event.type == 'pro') { %>
                             <div class="event-item-type-half-a"></div>
                             <% } else { %>
                             <div class="event-item-type-full"></div>
