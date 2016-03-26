@@ -19,7 +19,6 @@ lib/
 lib64/
 parts/
 sdist/
-media/
 var/
 *.egg-info/
 .installed.cfg
@@ -63,3 +62,5 @@ target/
 .ipynb_checkpoints
 .idea/
 *.sqlite3
+
+media/
