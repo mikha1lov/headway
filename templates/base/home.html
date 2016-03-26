@@ -3,17 +3,17 @@
 
 {% block title %}{% trans 'Главная' %}{% endblock %}
 {% block body %}
-
-    <div class="main_slider ">
+    <div class="slider_wrap">
+        <div class="slider_shadow"></div>
+        <div class="main_slider ">
         {% for item in slider_events %}
-            {{ item }}
-            <img src="{{ item.cover_photo.url }}" alt="">
+            <img class="slider_item" src="{{ item.cover_photo.url }}" alt="">
         {% endfor %}
+        </div>
     </div>
-    <p>Ивенты в слайдер</p>
-    {% for item in slider_events %}
 
-    {% endfor %}
+    {{ item }}
+
 
     <p>Ивенты в календарь</p>
     {% for item in events %}
