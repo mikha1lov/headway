@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'apps.experts',
     'apps.feedback',
     'apps.aid',
+    'apps.financial',
 ]
 
 MIDDLEWARE_CLASSES = [

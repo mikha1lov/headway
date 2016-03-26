@@ -8,7 +8,7 @@ from redactor.fields import RedactorField
 
 class Book(models.Model):
     title = models.CharField(_(u"Название"), max_length=255)
-    description = RedactorField(verbose_name=_(u"текст"),
+    description = RedactorField(verbose_name=_(u"Описание"),
                                 redactor_options={
                                     'lang': 'en',
                                     'plugins': ['table', 'video', 'fullscreen']
