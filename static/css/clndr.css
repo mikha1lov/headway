@@ -77,23 +77,23 @@
   color: #4f4f4f;
   background-color: #fff;
   border-bottom: 2px solid white;
-  background-image: url("../images/triangle.svg");
+  background-image: url("../img/calendar/triangle.svg");
   background-size: cover;
   background-position: center;
 }
 
 #full-clndr .clndr-grid .days .day.event, #full-clndr .clndr-grid .days .empty.event {
-  background-image: url("../images/icons/calendar/full.svg");
+  background-image: url("../img/calendar/full.svg");
   background-size: 100%;
   background-repeat: no-repeat;
 }
 
 #full-clndr .clndr-grid .days .day.event.half-b, #full-clndr .clndr-grid .days .empty.event.half-b {
-  background-image: url("../images/icons/calendar/half-b.svg");
+  background-image: url("../img/calendar/half-b.svg");
 }
 
 #full-clndr .clndr-grid .days .day.event.half-a, #full-clndr .clndr-grid .days .empty.event.half-a {
-  background-image: url("../images/icons/calendar/half-a.svg");
+  background-image: url("../img/calendar/half-a.svg");
 }
 
 #full-clndr .clndr-grid .days .day.adjacent-month .day-number, #full-clndr .clndr-grid .days .empty.adjacent-month .day-number {
@@ -137,15 +137,15 @@
 }
 
 #full-clndr .event-listing .event-item-type-half-b {
-  background-image: url("../images/icons/calendar/half-b-sm.svg");
+  background-image: url("../img/calendar/half-b-sm.svg");
 }
 
 #full-clndr .event-listing .event-item-type-half-a {
-  background-image: url("../images/icons/calendar/half-a-sm.svg");
+  background-image: url("../img/calendar/half-a-sm.svg");
 }
 
 #full-clndr .event-listing .event-item-type-full {
-  background-image: url("../images/icons/calendar/full-sm.svg");
+  background-image: url("../img/calendar/full-sm.svg");
 }
 
 #full-clndr .event-listing .event-item-type-half-b, #full-clndr .event-listing .event-item-type-half-a, #full-clndr .event-listing .event-item-type-full {
