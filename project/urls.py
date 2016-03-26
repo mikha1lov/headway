@@ -22,4 +22,5 @@ from project import settings
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('apps.base.urls', namespace='base')),
+    url(r'^api/', include('api.urls')),
 ]
