@@ -3,13 +3,44 @@
 
 {% block title %}{% trans 'Леготека' %}{% endblock %}
 {% block body %}
-    {% regroup items by category as sorted_items %}
-    {% for item in sorted_items %}
-        {{ item.grouper }}
-        <ul>
-        {% for i in item.list %}
-          <li>{{ i.title }}</li>
-        {% endfor %}
-        </ul>
-    {% endfor %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <ul class="nav nav-pills nav-stacked" role="tablist">
+                    {% for category in categories %}
+                        <li role="presentation" id="pill-{{ category.pk }}">
+                            <a href="{% url 'legoteka:by_category' category.pk %}">{{ category }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-md-8">
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane" id="tab-{{ category.pk }}">
+                        {% for item in items %}
+                            <div class="col-md-4 col-sm-12">
+                                <div class="thumbnail">
+                                    <img src="{{ item.photo.url }}" style="height: 100px; width: 100px;">
+                                    <div class="caption">
+                                        <span><h3>{{ item }}</h3>{% if item.available %}<h6>в наличии</h6>{% endif %}</span>
+                                        <p><a href="#" class="btn btn-default" role="button">Подать заявку</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block extra_js %}
+    <script>
+        $(function(){
+            var cat = {{ category.pk }}
+                    $('#pill-'+cat).addClass('active');
+            $('#tab-'+cat).addClass('active');
+        });
+    </script>
 {% endblock %}
