@@ -24,7 +24,7 @@
                                     <img src="{{ item.photo.url }}" class="legotech_image" height="150px" width="150px">
                                     <div class="caption">
                                         <span><p>{{ item|truncatechars:60 }}</p><h6>{% if item.available %}в наличии{% else %}нет в наличии{% endif %}</h6></span>
-                                        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                                        <button type="button" {% if not item.available %}disabled{% endif %} class="btn btn-primary btn-lg" data-toggle="modal" data-item_id="{{ item.id }}" data-target="#myModal">
                                             Подать заявку
                                         </button>
                                     </div>
