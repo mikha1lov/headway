@@ -149,3 +149,12 @@ footer{
     }
   }
 }
+.library_table{
+  tr{
+    border-bottom: 2px solid #cccccc;
+    td{
+      max-width: 320px;
+      padding: 13px 0;
+    }
+  }
+}

@@ -3,20 +3,52 @@
 
 {% block title %}{% trans 'Библиотека' %}{% endblock %}
 {% block body %}
-    {% for book in books %}
-        <p>{{ book.title }}
-        {{ book.description }}
-        {% if book.book_file %}
-        <a href="{{ book.book_file.url}}">Скачать книгу</a>
-        {% else %}
-            {{ book.holder }}
-            {{ book.return_date}}
-            <a href="?book_id={{ book.id }}">Отправить заявку</a>
-        {% endif %}</p>
-    {% endfor %}
-    <form action="#" method="post">
-    {% csrf_token %}
-    {{ get_book_form.as_p }}
-    <input type="submit" value="Submit" />
-</form>
+    <div class="container">
+        <h2>Библиотека</h2>
+        <table class="library_table" width="100%">
+            <tr class="table_header">
+                <th>Название книги</th>
+                <th>Краткое описание</th>
+                <th>На руках у:</th>
+                <th>Дата получения</th>
+                <th>Дата возврата</th>
+                <th>Скачать или <br>  отправить заявку</th>
+            </tr>
+            {% for book in books %}
+            <tr>
+                <td>{{ book.title }}</td>
+                <td>{{ book.description }}</td>
+                <td>{{ book.holder }}</td>
+                <td>{{ book.receiving_date }}</td>
+                <td>{{ book.return_date }}</td>
+                <td>{% if book.book_file %}
+                    <a href="{{ book.book_file.url}}">Скачать книгу</a>
+                {% else %}
+                    <button type="button" class="" data-toggle="modal" data-item_id="{{ book.id }}" data-target="#myModal">
+                        Подать заявку
+                    </button>
+                {% endif %}</td>
+            <tr>
+            {% endfor %}
+        </table>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Заполните форму</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ get_book_form.name }}
+                            {{ get_book_form.contacts }}
+                            {{ get_book_form.note }}
+                            <input type="submit">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

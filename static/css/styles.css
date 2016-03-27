@@ -139,4 +139,10 @@ footer {
     -moz-border-radius: 5px;
     border-radius: 5px; }
 
+.library_table tr {
+  border-bottom: 2px solid #cccccc; }
+  .library_table tr td {
+    max-width: 320px;
+    padding: 13px 0; }
+
 /*# sourceMappingURL=styles.css.map */
