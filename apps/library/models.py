@@ -11,8 +11,8 @@ class Book(models.Model):
     description = models.TextField(u'Описание')
     book_file = models.FileField(_(u"Файл"), blank=True, upload_to='books/')
     holder = models.CharField(_(u"У кого на руках"), max_length=255, blank=True)
-    receiving_date = models.DateField(_(u"Дата получения"), blank=True)
-    return_date = models.DateField(_(u"Дата возврата"), blank=True)
+    receiving_date = models.DateField(_(u"Дата получения"), blank=True, null=True)
+    return_date = models.DateField(_(u"Дата возврата"), blank=True, null=True)
 
     class Meta:
         verbose_name = _(u"Книга")
