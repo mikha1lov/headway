@@ -38,7 +38,7 @@ class LegotekaItemOrder(models.Model):
     item = models.ForeignKey(LegotekaItem, verbose_name=_("Предмет"))
     name = models.CharField(_(u"ФИО"), max_length=255)
     contacts = models.CharField(_("Телефон или email"), max_length=255)
-    note = models.CharField(_(u"Примечание"), max_length=255, blank=True)
+    note = models.TextField(_(u"Примечание"), blank=True)
 
     class Meta:
         verbose_name = _(u"Заявка на предмет леготеки")
