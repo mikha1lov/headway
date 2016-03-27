@@ -6,3 +6,8 @@ class LegotekaOrderForm(forms.ModelForm):
     class Meta:
         model = LegotekaItemOrder
         fields = '__all__'
+        widgets = {
+            'name': forms.TextInput(attrs={}),
+            'contacts': forms.TextInput(attrs={}),
+            'note': forms.TextInput(attrs={}),
+        }
