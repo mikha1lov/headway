@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+{% load i18n l10n static %}
+
+{% block title %}{% trans 'Библиотека' %}{% endblock %}
+{% block body %}
+    {% for book in books %}
+        {{ book.title }}
+        {{ book.description }}
+        {% if book.book_file %}
+        {{ book.book_file.url}}
+        {% else %}
+            {{ book.holder }}
+            {{ book.return_date}}
+            {{ get_book_form.as_p }}
+        {% endif %}
+    {% endfor %}
+{% endblock %}
