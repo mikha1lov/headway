@@ -111,7 +111,8 @@ footer {
     border: 1px solid #cccccc;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
-    border-radius: 5px; }
+    border-radius: 5px;
+    resize: none; }
   .modal-body form input[type='submit'] {
     padding: 9px 15px;
     background: #005e58;
