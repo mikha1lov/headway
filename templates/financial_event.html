@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+{% load i18n l10n static %}
+
+{% block title %}{% trans 'Финансовые ресуры' %}{% endblock %}
+{% block body %}
+    {% for book in books %}
+        <p>{{ book.title }}
+        {{ book.description }}
+        {% if book.book_file %}
+            <a href="?book_id={{ book.id }}">Отправить заявку</a>
+        {% endif %}</p>
+    {% endfor %}
+    <form action="#" method="post">
+    {% csrf_token %}
+    {{ event_take_part_form.as_p }}
+    <input type="submit" value="Submit" />
+</form>
+{% endblock %}

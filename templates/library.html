@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 {% load i18n l10n static %}
 
-{% block title %}{% trans 'Библиотека' %}{% endblock %}
+{% block title %}{% trans 'Финансовые ресуры' %}{% endblock %}
 {% block body %}
     <div class="container">
         <h2>Библиотека</h2>
@@ -12,30 +12,32 @@
                 <th>На руках у:</th>
                 <th>Дата получения</th>
                 <th>Дата возврата</th>
-                <th>Скачать или <br>  отправить заявку</th>
+                <th>Скачать или <br> отправить заявку</th>
             </tr>
             {% for book in books %}
-            <tr>
-                <td>{{ book.title }}</td>
-                <td>{{ book.description }}</td>
-                <td>{{ book.holder }}</td>
-                <td>{{ book.receiving_date }}</td>
-                <td>{{ book.return_date }}</td>
-                <td>{% if book.book_file %}
-                    <a href="{{ book.book_file.url}}">Скачать книгу</a>
-                {% else %}
-                    <button type="button" class="" data-toggle="modal" data-item_id="{{ book.id }}" data-target="#myModal">
-                        Подать заявку
-                    </button>
-                {% endif %}</td>
-            <tr>
+                <tr>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.description }}</td>
+                    <td>{{ book.holder }}</td>
+                    <td>{{ book.receiving_date }}</td>
+                    <td>{{ book.return_date }}</td>
+                    <td>{% if book.book_file %}
+                        <a href="{{ book.book_file.url }}">Скачать книгу</a>
+                    {% else %}
+                        <button type="button" class="" data-toggle="modal" data-item_id="{{ book.id }}"
+                                data-target="#myModal">
+                            Подать заявку
+                        </button>
+                    {% endif %}</td>
+                <tr>
             {% endfor %}
         </table>
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="myModalLabel">Заполните форму</h4>
                     </div>
                     <div class="modal-body">

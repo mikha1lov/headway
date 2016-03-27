@@ -25,7 +25,9 @@ urlpatterns = [
     url(r'^legoteka/', include('apps.legoteka.urls', namespace='legoteka')),
     url(r'^humanitarian_aid/', include('apps.aid.urls', namespace='humanitarian_aid')),
     url(r'^library/', include('apps.library.urls', namespace='library')),
+    url(r'^financial/', include('apps.financial.urls', namespace='financial')),
     url(r'^api/', include('api.urls')),
     url(r'^pages/(\S+)/$', 'apps.pages.views.pages_detail', name='pages_detail'),
+    url(r'^redactor/', include('redactor.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

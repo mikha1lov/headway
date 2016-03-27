@@ -7,11 +7,12 @@ from redactor.fields import RedactorField
 
 class FinancialEvent(models.Model):
     title = models.CharField(_(u"Название"), max_length=255)
-    description = RedactorField(verbose_name=_(u"Описание и условия"),
+    description = RedactorField(verbose_name=_(u"Описание и условия"), upload_to='financial/',
                                 redactor_options={
                                     'lang': 'en',
                                     'plugins': ['table', 'video', 'fullscreen']
                                 })
+    date = models.DateTimeField(u'Время проведения')
     payment_center = models.CharField(_(u"Оплата со стороны центра"), max_length=255)
     payment_sponsor = models.CharField(_(u"Оплата от спонсора"), max_length=255)
     sponsor = models.CharField(_(u"Спонсор"), max_length=255)
