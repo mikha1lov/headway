@@ -10,7 +10,7 @@ from apps.base.forms import NewFollowerForm
 
 
 def home(request):
-    slider_events = Event.objects.filter(date__lt=timezone.now())
+    slider_events = Event.objects.all()
     events = Event.objects.all().values('id', 'title', 'date', 'type')
     print(events)
     events = json.dumps(list(events), cls=DjangoJSONEncoder)
