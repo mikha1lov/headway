@@ -1,6 +1,5 @@
 # coding: utf-8
 from __future__ import unicode_literals
-
 from django.db import models
 from redactor.fields import RedactorField
 
@@ -16,3 +15,15 @@ class News(models.Model):
 
     def __unicode__(self):
         return self.title
+
+
+class Follower(models.Model):
+    email = models.CharField(u'Email', max_length=255)
+    created_at = models.DateField(u'Дата подписки', auto_now_add=True, editable=False)
+
+    class Meta:
+        verbose_name = u"Подписчик"
+        verbose_name_plural = u"Подписчики"
+
+    def __unicode__(self):
+        return self.email

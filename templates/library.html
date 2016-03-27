@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 {% load i18n l10n static %}
 
-{% block title %}{% trans 'Финансовые ресуры' %}{% endblock %}
+{% block title %}{% trans 'Библиотека' %}{% endblock %}
 {% block body %}
     <div class="container">
         <h2>Библиотека</h2>
@@ -24,7 +24,7 @@
                     <td>{% if book.book_file %}
                         <a href="{{ book.book_file.url }}">Скачать книгу</a>
                     {% else %}
-                        <button type="button" class="" data-toggle="modal" data-item_id="{{ book.id }}"
+                        <button type="button" class="order-btn" data-item_id="{{ book.id }}"
                                 data-target="#myModal">
                             Подать заявку
                         </button>
@@ -41,8 +41,9 @@
                         <h4 class="modal-title" id="myModalLabel">Заполните форму</h4>
                     </div>
                     <div class="modal-body">
-                        <form method="post">
+                        <form method="post", id="order-item">
                             {% csrf_token %}
+                            <div style="display: none;">{{ get_book_form.item }}</div>
                             {{ get_book_form.name }}
                             {{ get_book_form.contacts }}
                             {{ get_book_form.note }}
@@ -53,4 +54,17 @@
             </div>
         </div>
     </div>
+    <div class="popup_wrap"></div>
+{% endblock %}
+{% block extra_js %}
+    <script>
+        $(function(){
+            $('.order-btn').on('click', function(){
+                $(this).addClass('chosen-item');
+                var item = $(this).attr('data-item_id');
+                $("#id_item").val(item);
+                $('#myModal').modal('show');
+            });
+        });
+    </script>
 {% endblock %}
