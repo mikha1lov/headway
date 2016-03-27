@@ -4,11 +4,11 @@
         <div class="container">
             <div class="header_wrap">
                 <div class="main_logo">
-                    <img src="{% static 'img/logo.png' %}" alt="">
+                    <a href="{% url 'base:home' %}"><img src="{% static 'img/logo.png' %}" alt=""></a>
                 </div>
                 <div class="header_menu_wrap">
                     <a href="{% url 'base:home' %}" class="header_menu_items">Главная</a>
-                    <a href="#" class="header_menu_items">О нас</a>
+                    <a href="{% url 'pages_detail' 'o-nas' %}" class="header_menu_items">О нас</a>
                     <a href="{% url 'legoteka:home' %}" class="header_menu_items">Леготека</a>
                     <a href="{% url 'financial:home' %}" class="header_menu_items">Финансовые ресурсы</a>
                     <a href="{% url 'humanitarian_aid:home' %}" class="header_menu_items">Гумпомощь</a>
