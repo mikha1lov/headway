@@ -4,6 +4,11 @@
 {% block title %}{% trans 'Главная' %}{% endblock %}
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/clndr.css' %}">
+    <style>
+        .hover-event{
+            background-color: #4cae4c;
+        }
+    </style>
 {% endblock %}
 {% block body %}
     <div class="slider_wrap">
@@ -17,7 +22,7 @@
     </div>
     <div class="container">
         <div class="col-md-6">
-        <h2>Последние новости</h2>
+            <h2>Последние новости</h2>
             {% for item in news %}
                 <a href="#">
                     <div class="news_wrap">
@@ -74,18 +79,18 @@
             </div>
         </div>
     </div>
-<div class="container-fluid subscrip_bg">
-    <div class="container">
-        <div class="subscrip_wrap">
-            <h2>Подпишитесь на наши обновления:</h2>
-            <form action="" method="post">
-                {% csrf_token %}
-                {{ folow_form.email }}
-                <button type="submit">Подписаться</button>
-            </form>
+    <div class="container-fluid subscrip_bg">
+        <div class="container">
+            <div class="subscrip_wrap">
+                <h2>Подпишитесь на наши обновления:</h2>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{ folow_form.email }}
+                    <button type="submit">Подписаться</button>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 {% endblock %}
 {% block extra_js %}
     <script src="{% static 'js/underscore.js' %}"></script>
@@ -102,16 +107,29 @@
         // Здесь нужно указывать "type", по ним ставятся уникальные классы
 
         var events = {{ events|safe }}
-        clndr = $('#full-clndr').clndr({
-            template: $('#full-clndr-template').html(),
-            daysOfTheWeek: ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС'],
-            events: events
-        });
+                clndr = $('#full-clndr').clndr({
+                    template: $('#full-clndr-template').html(),
+                    daysOfTheWeek: ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС'],
+                    events: events
+                });
         console.log(events);
-    $(function(){
-        $('.event-item-type-class').on('hover', function(){
-
+        $.each( events, function( key, value ) {
+            var date = value["date"].slice(0, 10);
+            $('.calendar-day-'+date).addClass("clndr-event"+value["id"])
+        });
+        $(function(){
+            $('.event-item').hover(function(){
+                        var attr = $(this).attr('data-event');
+                        //attr = parseInt(attr) + 1;
+                        $('.clndr-event'+attr).css('background-color', '#c7254e');
+                        //$('.clndr-event'+attr).addClass('hover-event');
+                    },
+                    function(){
+                        var attr = $(this).attr('data-event');
+                        //attr = parseInt(attr) + 1;
+                        //$('.clndr-event'+attr).removeClass('hover-event');
+                        $('.clndr-event'+attr).css('background-color', '#4cae4c');
+                    });
         })
-    })
     </script>
 {% endblock %}

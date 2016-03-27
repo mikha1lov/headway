@@ -1,4 +1,3 @@
-
 #full-clndr {
   width: 100%;
   background-color: #fff;
@@ -83,9 +82,7 @@
 }
 
 #full-clndr .clndr-grid .days .day.event, #full-clndr .clndr-grid .days .empty.event {
-  background-image: url("../img/calendar/full.svg");
-  background-size: 100%;
-  background-repeat: no-repeat;
+  background-color: #4cae4c;
 }
 
 #full-clndr .clndr-grid .days .day.event.class, #full-clndr .clndr-grid .days .empty.event.class {
