@@ -10,7 +10,7 @@ from apps.event.models import Event
 
 def home(request):
     slider_events = Event.objects.filter(date__lt=timezone.now())
-    events = Event.objects.filter(date__gte=timezone.now()).values('title', 'date', 'type')
+    events = Event.objects.filter(date__gte=timezone.now()).values('id', 'title', 'date', 'type')
     print(events)
     events = json.dumps(list(events), cls=DjangoJSONEncoder)
     print(events)

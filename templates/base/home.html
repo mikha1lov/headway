@@ -58,15 +58,13 @@
                     <div class="event-listing">
                         <div class="event-listing-title">В этом месяце</div>
                         <% _.each(eventsThisMonth, function(event) { %>
-                        <div class="event-item">
+                        <div class="event-item" data-event="<%= event.id %>">
                             <% if (event.type == 'class') { %>
-                            <div class="event-item-type-half-b"></div>
+                            <div class="event-item-type-class"></div>
                             <% } else if (event.type == 'fun') { %>
-                            <div class="event-item-type-half-a"></div>
+                            <div class="event-item-type-fun"></div>
                             <% } else if (event.type == 'pro') { %>
-                            <div class="event-item-type-half-a"></div>
-                            <% } else { %>
-                            <div class="event-item-type-full"></div>
+                            <div class="event-item-type-pro"></div>
                             <% } %>
                             <div class="event-item-name"><%= event.title %></div>
                         </div>
@@ -100,7 +98,6 @@
                 "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"
             ]
         });
-
         // Здесь нужно указывать "type", по ним ставятся уникальные классы
 
         var events = {{ events|safe }}
@@ -109,5 +106,11 @@
             daysOfTheWeek: ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС'],
             events: events
         });
+        console.log(events);
+    $(function(){
+        $('.event-item-type-class').on('hover', function(){
+
+        })
+    })
     </script>
 {% endblock %}
