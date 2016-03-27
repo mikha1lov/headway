@@ -23,8 +23,10 @@
                                 <div class="thumbnail">
                                     <img src="{{ item.photo.url }}" class="legotech_image" height="150px" width="150px">
                                     <div class="caption">
-                                        <span><p>{{ item }}</p>{% if item.available %}<h6>в наличии</h6>{% endif %}</span>
-                                        <p><a href="#" class="btn btn-default" role="button">Подать заявку</a></p>
+                                        <span><p>{{ item|truncatechars:60 }}</p><h6>{% if item.available %}в наличии{% else %}нет в наличии{% endif %}</h6></span>
+                                        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                                            Подать заявку
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -34,21 +36,32 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Заполните форму</h4>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form }}
+                        <input type="submit">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <div>
-    <form method="post">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit">
-    </form>
-
     </div>
 
 {% endblock %}
 {% block extra_js %}
     <script>
         $(function(){
-            var cat = {{ category.pk }}
-                    $('#pill-'+cat).addClass('active');
+            var cat = {{ category.pk }};
+            $('#pill-'+cat).addClass('active');
             $('#tab-'+cat).addClass('active');
         });
     </script>
