@@ -5,7 +5,8 @@ from .models import LegotekaItem, Category
 
 def home(request):
     categories = Category.objects.all()
-    items = LegotekaItem.objects.all()
+    category = Category.objects.first()
+    items = LegotekaItem.objects.filter(category=category)
     return render(request, 'legoteka.html', locals())
 
 
