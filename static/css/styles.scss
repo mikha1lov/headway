@@ -1,3 +1,19 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 90px;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 90px;
+  background-color: #f5f5f5;
+}
 body{
   font-family: Roboto, sans-serif;
   font-size: 16px;
@@ -102,6 +118,8 @@ footer{
 }
 .caption span p{
   min-height: 45px;
+  max-height: 45px;
+  overflow: hidden;
 }
 .modal-dialog{
   width: 320px;
