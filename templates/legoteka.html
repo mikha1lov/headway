@@ -46,7 +46,9 @@
                 <div class="modal-body">
                     <form method="post">
                         {% csrf_token %}
-                        {{ form }}
+                        {{ form.name }}
+                        {{ form.contacts }}
+                        {{ form.note }}
                         <input type="submit">
                     </form>
                 </div>
@@ -55,7 +57,7 @@
     </div>
     <div>
     </div>
-
+<div class="popup_wrap"></div>
 {% endblock %}
 {% block extra_js %}
     <script>

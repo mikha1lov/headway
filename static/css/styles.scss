@@ -102,5 +102,31 @@ footer{
 }
 .caption span p{
   min-height: 45px;
-
+}
+.modal-dialog{
+  width: 320px;
+}
+.modal-body{
+  form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px;
+    input[type='text'], .form_note{
+      padding: 15px;
+      margin-bottom: 18px;
+      border: 1px solid #cccccc;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+    }
+    input[type='submit']{
+      padding: 9px 15px;
+      background: #005e58;
+      color: #ffffff;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+    }
+  }
 }
