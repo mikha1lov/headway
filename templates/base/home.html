@@ -15,7 +15,6 @@
         <div class="main_slider ">
             {% for item in slider_events %}
                 <div class="slider_item" style="background-image: linear-gradient(to right, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('{{ item.cover_photo.url }}') ; background-size: cover; ">
-                    <div class="slider_title">{{ item.title }}</div>
                 </div>
             {% endfor %}
         </div>
