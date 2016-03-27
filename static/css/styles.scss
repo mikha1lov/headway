@@ -94,3 +94,13 @@ footer{
   justify-content: space-between;
   align-items: center;
 }
+.thumbnail .legotech_image{
+  width: 150px;
+  height: 150px;
+  margin-top: 15px;
+  object-fit: cover;
+}
+.caption span p{
+  min-height: 45px;
+
+}
