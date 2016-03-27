@@ -9,7 +9,8 @@ class LegotekaOrderForm(forms.ModelForm):
         model = LegotekaItemOrder
         fields = '__all__'
         widgets = {
-            'name': forms.TextInput(attrs={'class':'form_name', 'placeholder':u'ФИО'}),
-            'contacts': forms.TextInput(attrs={'class':'form_contacts', 'placeholder':u'E-mail или телефон'}),
-            'note': forms.Textarea(attrs={'class':'form_note', 'placeholder':u'Комментарий'}),
+            'name': forms.TextInput(attrs={'class': 'form_name', 'placeholder': u'ФИО', 'required': 'True'}),
+            'contacts': forms.TextInput(attrs={'class': 'form_contacts', 'placeholder': u'E-mail или телефон',
+                                               'required': 'True'}),
+            'note': forms.Textarea(attrs={'class': 'form_note', 'placeholder': u'Комментарий', 'required': 'True'}),
         }

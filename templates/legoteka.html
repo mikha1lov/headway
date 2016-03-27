@@ -4,7 +4,7 @@
 {% block title %}{% trans 'Леготека' %}{% endblock %}
 {% block body %}
     <div class="container">
-    <h2>Леготека</h2>
+        <h2>Леготека</h2>
         <div class="row">
             <div class="col-md-4">
                 <ul class="nav nav-pills nav-stacked" role="tablist">
@@ -24,7 +24,7 @@
                                     <img src="{{ item.photo.url }}" class="legotech_image" height="150px" width="150px">
                                     <div class="caption">
                                         <span><p>{{ item|truncatechars:60 }}</p><h6>{% if item.available %}в наличии{% else %}нет в наличии{% endif %}</h6></span>
-                                        <button type="button" {% if not item.available %}disabled{% endif %} class="btn btn-primary btn-lg" data-toggle="modal" data-item_id="{{ item.id }}" data-target="#myModal">
+                                        <button type="button" {% if not item.available %}disabled{% endif %} class="btn btn-primary btn-lg order-btn" data-item_id="{{ item.id }}" data-target="#myModal">
                                             Подать заявку
                                         </button>
                                     </div>
@@ -44,8 +44,9 @@
                     <h4 class="modal-title" id="myModalLabel">Заполните форму</h4>
                 </div>
                 <div class="modal-body">
-                    <form method="post">
+                    <form method="post" id="order-item">
                         {% csrf_token %}
+                        <div style="display: none;">{{ form.item }}</div>
                         {{ form.name }}
                         {{ form.contacts }}
                         {{ form.note }}
@@ -57,7 +58,7 @@
     </div>
     <div>
     </div>
-<div class="popup_wrap"></div>
+    <div class="popup_wrap"></div>
 {% endblock %}
 {% block extra_js %}
     <script>
@@ -65,6 +66,12 @@
             var cat = {{ category.pk }};
             $('#pill-'+cat).addClass('active');
             $('#tab-'+cat).addClass('active');
+            $('.order-btn').on('click', function(){
+                $(this).addClass('chosen-item');
+                var item = $(this).attr('data-item_id');
+                $("#id_item").val(item);
+                $('#myModal').modal('show');
+            });
         });
     </script>
 {% endblock %}
