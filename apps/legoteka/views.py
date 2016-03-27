@@ -14,4 +14,6 @@ def legoteka_by_category(request, pk):
     categories = Category.objects.all()
     items = LegotekaItem.objects.filter(category=category)
     form = LegotekaOrderForm(request.POST or None)
+    if form.is_valid():
+        form.save()
     return render(request, 'legoteka.html', locals())
