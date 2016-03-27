@@ -3,21 +3,98 @@
 
 {% block title %}{% trans 'Гуманитарная помощь' %}{% endblock %}
 {% block body %}
-    <p><b>Детям</b></p>
-    <ul>
-        {% for item in for_kids %}
-          <li>{{ item.title }}</li>
-        {% endfor %}
-    </ul>
+    <div class="container">
+        <h2>Гуманитарная помощь</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <ul id="myTabs" class="nav nav-pills nav-stacked" role="tablist">
+                    <li role="presentation" class="">
+                        <a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="false">Детям</a>
+                    </li>
+                    <li role="presentation" class="dropdown">
+                        <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown" aria-controls="myTabDrop1-contents" aria-expanded="true">
+                            Потенциальным спонсорам
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="myTabDrop1" id="myTabDrop1-contents">
+                            <li class="">
+                                <a href="#dropdown1" role="tab" id="dropdown1-tab" data-toggle="tab" aria-controls="dropdown1">Центру</a>
+                            </li>
+                            <li class="">
+                                <a href="#dropdown2" role="tab" id="dropdown2-tab" data-toggle="tab" aria-controls="dropdown2">Детям</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-8">
+                <div id="myTabContent" class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade" id="home" aria-labelledby="home-tab">
+                    <table class="library_table" width="100%">
+                        <tr>
+                            <th>Название</th>
+                            <th>Описание</th>
+                            <th>Форма</th>
+                        </tr>
+                        {% for item in for_kids %}
+                        <tr>
+                            <td>{{ item.title }}</td>
+                            <td>{{ item.description }}</td>
+                            <td>
+                                <button type="button" class="" data-toggle="modal" data-item_id="{{ book.id }}" data-target="#myModal">
+                                    Подать заявку
+                                </button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    </div>
+                    {% regroup for_sponsors by get_type_display as sorted_items %}
+                    {% for item in sorted_items %}
+                        <div role="tabpanel" class="tab-pane fade" id="dropdown{{ forloop.counter }}" aria-labelledby="home-tab">
+                            <h3>{{ item.grouper }}</h3>
+                            <br>
+                            <table class="library_table" width="100%">
+                                <tr>
+                                    <th>Название</th>
+                                    <th>Описание</th>
+                                    <th>Форма</th>
+                                </tr>
+                                {% for i in item.list %}
+                                    <tr>
+                                        <td>{{ i.title }}</td>
+                                        <td>{{ i.description }}</td>
+                                        <td>
+                                            <button type="button" class="" data-toggle="modal" data-item_id="{{ book.id }}" data-target="#myModal">
+                                                Подать заявку
+                                            </button>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">Заполните форму</h4>
+        </div>
+        <div class="modal-body">
+            <form method="post">
+                {% csrf_token %}
+                {{ get_book_form.name }}
+                {{ get_book_form.contacts }}
+                {{ get_book_form.note }}
+                <input type="submit">
+            </form>
+        </div>
+    </div>
 
-    <p><b>Потенциальным спонсорам</b></p>
-    {% regroup for_sponsors by get_type_display as sorted_items %}
-    {% for item in sorted_items %}
-        {{ item.grouper }}
-        <ul>
-        {% for i in item.list %}
-          <li>{{ i.title }}</li>
-        {% endfor %}
-        </ul>
-    {% endfor %}
 {% endblock %}
