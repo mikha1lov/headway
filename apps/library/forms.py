@@ -7,4 +7,4 @@ from models import BookOrder
 class BookOrderForm(forms.ModelForm):
     class Meta:
         model = BookOrder
-        exclude = ()
+        exclude = ('item', )
